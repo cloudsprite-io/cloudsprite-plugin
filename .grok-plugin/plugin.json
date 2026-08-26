@@ -1,0 +1,21 @@
+{
+  "name": "cloudsprite",
+  "displayName": "CloudSprite",
+  "version": "0.1.0",
+  "description": "Talk to CloudSprite as the signed-in user: search datasets and docs, set org/team/project scope, and file product feedback.",
+  "author": {
+    "name": "CloudSprite",
+    "url": "https://cloudsprite.io"
+  },
+  "homepage": "https://cloudsprite.io",
+  "repository": "https://github.com/cloudsprite-io/cloudsprite-plugin",
+  "license": "MIT",
+  "keywords": [
+    "cloudsprite",
+    "s-parameters",
+    "rf",
+    "signal-integrity",
+    "test-and-measurement",
+    "mcp"
+  ]
+}

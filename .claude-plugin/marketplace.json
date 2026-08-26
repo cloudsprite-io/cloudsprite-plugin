@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-marketplace.json",
+  "name": "cloudsprite",
+  "description": "CloudSprite plugin marketplace",
+  "owner": {
+    "name": "CloudSprite"
+  },
+  "plugins": [
+    {
+      "name": "cloudsprite",
+      "source": "./",
+      "description": "Talk to CloudSprite as the signed-in user: search datasets and docs, set org/team/project scope, and file product feedback.",
+      "version": "0.1.0",
+      "author": {
+        "name": "CloudSprite",
+        "url": "https://cloudsprite.io"
+      },
+      "homepage": "https://github.com/cloudsprite-io/cloudsprite-plugin",
+      "keywords": [
+        "cloudsprite",
+        "s-parameters",
+        "rf",
+        "signal-integrity",
+        "mcp"
+      ]
+    }
+  ]
+}

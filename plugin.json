@@ -1,0 +1,21 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "cloudsprite",
+  "version": "0.1.0",
+  "description": "CloudSprite measurement data, product docs, and feedback for Claude, Grok, and Agent Plugins clients",
+  "author": {
+    "name": "CloudSprite",
+    "url": "https://cloudsprite.io"
+  },
+  "homepage": "https://cloudsprite.io",
+  "repository": "https://github.com/cloudsprite-io/cloudsprite-plugin",
+  "license": "MIT",
+  "keywords": [
+    "cloudsprite",
+    "s-parameters",
+    "rf",
+    "signal-integrity",
+    "test-and-measurement",
+    "mcp"
+  ]
+}
