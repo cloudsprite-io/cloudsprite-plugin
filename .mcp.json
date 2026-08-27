@@ -2,7 +2,7 @@
   "mcpServers": {
     "cloudsprite": {
       "type": "http",
-      "url": "${CLOUDSPRITE_MCP_URL:-${user_config.mcp_url}}"
+      "url": "${CLOUDSPRITE_MCP_URL:-https://api.cloudsprite.io/mcp}"
     }
   }
 }

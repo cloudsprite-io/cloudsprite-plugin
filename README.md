@@ -38,32 +38,17 @@ This release is **read-only** plus feedback. It does not mutate datasets, tags, 
 
 ## MCP URL
 
-Customers: do nothing. Production is the default:
+Production (the only URL customers use):
 
 ```text
 https://api.cloudsprite.io/mcp
 ```
 
-Transport: MCP Streamable HTTP. No `Authorization` header is stored in the plugin. The client discovers OAuth from the MCP origin and holds the tokens. There is no environment switcher in the customer UI.
-
-### Staff override (Claude Code)
-
-Claude Code can retarget MCP without a second plugin:
-
-1. **Plugin config** — `/plugin` → CloudSprite → **MCP URL** (saved in user settings `pluginConfigs`, not this repo).
-2. **Environment** — `CLOUDSPRITE_MCP_URL` in the process environment, or in `~/.claude/settings.json` under `"env"`. If set, this wins over the plugin config value.
-
-Examples: `https://dev-api.cloudsprite.io/mcp` (hosted-dev) or `http://localhost:8000/mcp` (local). OAuth metadata is read from **that** host (`/.well-known/oauth-authorization-server`).
-
-The GUI Claude app does **not** load your shell profile (`~/.zshrc`). Prefer `~/.claude/settings.json` `"env"` over exporting the variable only in zsh.
-
-Do not put this URL in a goshen `.env` file. Customers never load that file, and this public plugin must not ship one.
-
-### Grok / Agent Plugins
-
-The portable `mcp.json` is a **literal** production URL. Those hosts do not interpolate `${}` in MCP URLs; an unexpanded string would be fetched as-is. Override the MCP URL in the **client** if you need hosted-dev or local.
+Transport: MCP Streamable HTTP. No `Authorization` header is stored in the plugin. The client discovers OAuth from the MCP origin and holds the tokens. There is no environment picker in the plugin UI.
 
 A 401 from `/mcp` before OAuth is live is expected. The plugin should fail with a clear auth error, not hang.
+
+Claude Code honors `CLOUDSPRITE_MCP_URL` if the client process has it set (`${CLOUDSPRITE_MCP_URL:-https://api.cloudsprite.io/mcp}` in `.mcp.json`). The GUI app reads `~/.claude/settings.json` `"env"`, not your shell profile. Portable `mcp.json` is a literal production URL (no interpolation). Do not commit a `.env` here.
 
 ## Skills
 
@@ -90,7 +75,7 @@ Installing the plugin also clones this GitHub repository (`https://github.com/cl
 
 The plugin does **not** call GitLab, Linear, HubSpot, or any issue tracker. Feedback is filed by the CloudSprite API after `submit_feedback`.
 
-If Claude Code is pointed at another origin (plugin **MCP URL** or `CLOUDSPRITE_MCP_URL`), replace `api.cloudsprite.io` in the table with that host. Discovery and token endpoints follow it. `http://localhost:8000` is valid for local staff use.
+If `CLOUDSPRITE_MCP_URL` is set, discovery and token endpoints follow that host instead of `api.cloudsprite.io`.
 
 ## License
 

@@ -10,7 +10,7 @@
       "name": "cloudsprite",
       "source": "./",
       "description": "Talk to CloudSprite as the signed-in user: search datasets and docs, set org/team/project scope, and file product feedback.",
-      "version": "0.1.2",
+      "version": "0.1.3",
       "author": {
         "name": "CloudSprite",
         "url": "https://cloudsprite.io"
