@@ -41,7 +41,7 @@ This release is **read-only** plus feedback. It does not mutate datasets, tags, 
 Default (pinned in `mcp.json` and `.mcp.json`):
 
 ```text
-https://api.cloudsprite.com/mcp
+https://api.cloudsprite.io/mcp
 ```
 
 Transport: MCP Streamable HTTP. No `Authorization` header is stored in the plugin. The client discovers OAuth from the MCP origin and holds the tokens.
@@ -70,16 +70,16 @@ The plugin package does not open sockets itself. **Clients** that load it will c
 
 | URL | Why |
 |-|-|
-| `https://api.cloudsprite.com/mcp` | MCP Streamable HTTP (tools) |
-| `https://api.cloudsprite.com/.well-known/oauth-authorization-server` | OAuth 2.1 authorization-server metadata |
-| `https://api.cloudsprite.com/.well-known/oauth-protected-resource` | OAuth protected-resource metadata (if advertised) |
+| `https://api.cloudsprite.io/mcp` | MCP Streamable HTTP (tools) |
+| `https://api.cloudsprite.io/.well-known/oauth-authorization-server` | OAuth 2.1 authorization-server metadata |
+| `https://api.cloudsprite.io/.well-known/oauth-protected-resource` | OAuth protected-resource metadata (if advertised) |
 | Authorization, token, revocation, and JWKS URLs from that metadata | Cognito Hosted UI PKCE. Hosts are **not** hardcoded here; they come from discovery. |
 
 Installing the plugin also clones this GitHub repository (`https://github.com/cloudsprite-io/cloudsprite-plugin`).
 
 The plugin does **not** call GitLab, Linear, HubSpot, or any issue tracker. Feedback is filed by the CloudSprite API after `submit_feedback`.
 
-If `CLOUDSPRITE_MCP_URL` points at another HTTPS origin, replace `api.cloudsprite.com` in the table with that host. Discovery and token endpoints follow it.
+If `CLOUDSPRITE_MCP_URL` points at another HTTPS origin, replace `api.cloudsprite.io` in the table with that host. Discovery and token endpoints follow it.
 
 ## License
 

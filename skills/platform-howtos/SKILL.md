@@ -15,7 +15,7 @@ CloudSprite API key from this repo.
 
 ## 1. Sign in
 
-The MCP server is `https://api.cloudsprite.com/mcp` (Streamable HTTP).
+The MCP server is `https://api.cloudsprite.io/mcp` (Streamable HTTP).
 
 The client runs OAuth 2.1 with PKCE. Authorization-server metadata is
 discovered from the MCP URL (`/.well-known/oauth-authorization-server`).

@@ -3,7 +3,7 @@
   "mcpServers": {
     "cloudsprite": {
       "type": "streamable-http",
-      "url": "https://api.cloudsprite.com/mcp"
+      "url": "https://api.cloudsprite.io/mcp"
     }
   }
 }
