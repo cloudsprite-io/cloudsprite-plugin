@@ -2,7 +2,9 @@
   "name": "cloudsprite",
   "description": "CloudSprite plugin marketplace",
   "owner": {
-    "name": "CloudSprite"
+    "name": "CloudSprite",
+    "email": "support@cloudsprite.io",
+    "url": "https://cloudsprite.io"
   },
   "plugins": [
     {

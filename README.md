@@ -19,7 +19,7 @@ On first MCP use the client should start an OAuth 2.1 (PKCE) sign-in against Clo
 
 ### Grok Build
 
-This repo carries a Grok catalog (`.grok-plugin/`) so the same tree can be SHA-pinned later. Official listing on `xai-org/plugin-marketplace` is **not** part of this bootstrap.
+This repo carries a Grok catalog (`.grok-plugin/`) so the same tree can be SHA-pinned on [`xai-org/plugin-marketplace`](https://github.com/xai-org/plugin-marketplace). Official listing is a SHA pin of a tagged release, not a second plugin repo. Do not open that PR until production `/mcp` OAuth and rate limits are live. The catalog entry is in [DIRECTORY.md](DIRECTORY.md).
 
 ### Agent Plugins clients
 
@@ -71,11 +71,22 @@ The plugin package does not open sockets itself. **Clients** that load it will c
 | `https://api.cloudsprite.io/.well-known/oauth-protected-resource` | OAuth protected-resource metadata (if advertised) |
 | Authorization, token, revocation, and JWKS URLs from that metadata | Cognito Hosted UI PKCE. Hosts are **not** hardcoded here; they come from discovery. |
 
-Installing the plugin also clones this GitHub repository (`https://github.com/cloudsprite-io/cloudsprite-plugin`).
+Installing the plugin also clones this GitHub repository (`https://github.com/cloudsprite-io/cloudsprite-plugin`). Tagged releases are `vMAJOR.MINOR.PATCH` matching `plugin.json` `version`.
 
 The plugin does **not** call GitLab, Linear, HubSpot, or any issue tracker. Feedback is filed by the CloudSprite API after `submit_feedback`.
 
 If `CLOUDSPRITE_MCP_URL` is set, discovery and token endpoints follow that host instead of `api.cloudsprite.io`.
+
+## Support
+
+- Product: [https://cloudsprite.io](https://cloudsprite.io)
+- Docs: [https://docs.cloudsprite.io](https://docs.cloudsprite.io)
+- Email: [support@cloudsprite.io](mailto:support@cloudsprite.io)
+- Privacy: [privacy@cloudsprite.io](mailto:privacy@cloudsprite.io)
+
+## Releases
+
+Git tags are `v` + the `version` in `plugin.json` (currently `0.1.3`). Maintainers publish with `scripts/publish.sh` after `scripts/audit.sh` passes. Republishing the same tag is a no-op if `HEAD` still matches; a different tree at the same version fails.
 
 ## License
 
