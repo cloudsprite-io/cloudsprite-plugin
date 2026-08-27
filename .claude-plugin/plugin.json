@@ -2,7 +2,7 @@
   "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
   "name": "cloudsprite",
   "displayName": "CloudSprite",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Talk to CloudSprite as the signed-in user: search datasets and docs, set org/team/project scope, and file product feedback.",
   "author": {
     "name": "CloudSprite",
@@ -18,5 +18,13 @@
     "signal-integrity",
     "test-and-measurement",
     "mcp"
-  ]
+  ],
+  "userConfig": {
+    "mcp_url": {
+      "type": "string",
+      "title": "MCP URL",
+      "description": "Production default. Staff: https://dev-api.cloudsprite.io/mcp or http://localhost:8000/mcp",
+      "default": "https://api.cloudsprite.io/mcp"
+    }
+  }
 }

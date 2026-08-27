@@ -15,7 +15,15 @@ CloudSprite API key from this repo.
 
 ## 1. Sign in
 
-The MCP server is `https://api.cloudsprite.io/mcp` (Streamable HTTP).
+The MCP server defaults to production `https://api.cloudsprite.io/mcp`
+(Streamable HTTP). Customers do not change this.
+
+Staff on Claude Code may retarget via plugin config **MCP URL** or
+`CLOUDSPRITE_MCP_URL` (process environment or `~/.claude/settings.json`
+`"env"` — the GUI app does not read `~/.zshrc`). Grok / Agent Plugins
+keep the portable `mcp.json` production URL until that host interpolates;
+override in the client MCP URL if needed. Never tell anyone to put this
+in a goshen `.env`.
 
 The client runs OAuth 2.1 with PKCE. Authorization-server metadata is
 discovered from the MCP URL (`/.well-known/oauth-authorization-server`).
