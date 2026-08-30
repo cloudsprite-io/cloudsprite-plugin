@@ -2,6 +2,8 @@
 
 Fill-in answers for the Claude plugin directory form and the Grok SHA-pin PR. **Do not submit either listing until production `https://api.cloudsprite.io/mcp` serves MCP (OAuth + rate limits).** Self-serve GitHub install (`/plugin marketplace add cloudsprite-io/cloudsprite-plugin`) can stay.
 
+Registry / PulseMCP / mcp.so / Grok JSON packets: [listings/](listings/). Grok pin in this file is the tagged `v0.1.3` SHA; the listings packet tracks current `main` and must be re-pinned after that branch merges.
+
 Submitter: a CloudSprite org owner. Forms:
 
 - Claude.ai: https://claude.ai/admin-settings/directory/submissions/plugins/new
