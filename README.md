@@ -6,24 +6,73 @@ The plugin talks to **production** CloudSprite over remote MCP. There are no API
 
 Plugin `name` is `cloudsprite` and is immutable once a marketplace lists it. The GitHub org is `cloudsprite-io` because `cloudsprite` was already taken on GitHub.
 
-## Install
+## Connect your AI to CloudSprite
 
-### Claude Code
+Full per-client steps: [Connect your AI to CloudSprite](https://docs.cloudsprite.io/platform/connect-your-ai/).
+
+There is no API key in this repo and none in chat. Sign in with the same CloudSprite account you use in the browser.
+
+| What | Value |
+|-|-|
+| MCP URL | `https://api.cloudsprite.io/mcp` |
+| Transport | Streamable HTTP |
+| OAuth discovery | `https://api.cloudsprite.io/.well-known/oauth-authorization-server` |
+| Plugin slug | `cloudsprite` (fixed) |
+
+### How do I connect Claude Code to CloudSprite?
 
 ```text
 /plugin marketplace add cloudsprite-io/cloudsprite-plugin
 /plugin install cloudsprite@cloudsprite
 ```
 
-On first MCP use the client should start an OAuth 2.1 (PKCE) sign-in against CloudSprite.
+Enable the `cloudsprite` plugin if it is not already on. On first tool use, complete the browser sign-in.
 
-### Grok Build
+### How do I connect Cursor, GitHub Copilot, VS Code, or Codex to CloudSprite?
 
-This repo carries a Grok catalog (`.grok-plugin/`) so the same tree can be SHA-pinned on [`xai-org/plugin-marketplace`](https://github.com/xai-org/plugin-marketplace). Official listing is a SHA pin of a tagged release, not a second plugin repo. Do not open that PR until production `/mcp` OAuth and rate limits are live. The catalog entry is in [DIRECTORY.md](DIRECTORY.md).
+This repo is an [Agent Plugins 1.0](https://agent-plugins.org/specification) package: root `plugin.json`, `mcp.json`, and `skills/`.
 
-### Agent Plugins clients
+1. Clone this repository (or add `cloudsprite-io/cloudsprite-plugin` as the plugin source if your client accepts a git URL).
+2. Load it as an Agent Plugin. In Cursor, a local checkout under `~/.cursor/plugins/local/cloudsprite` is enough.
+3. Enable the plugin and complete OAuth when the client prompts.
 
-Point the client at this repository (or a local checkout). Root `plugin.json` + `mcp.json` are the portable Agent Plugins 1.0 payload. Skills live under `skills/`.
+If the client cannot load Agent Plugins, add a remote MCP server instead (same URL and OAuth as [any MCP client](#how-do-i-connect-any-mcp-client-to-cloudsprite)).
+
+### How do I connect Grok to CloudSprite?
+
+```text
+grok plugin marketplace add cloudsprite-io/cloudsprite-plugin
+grok plugin install cloudsprite --trust
+```
+
+Official listing on xAI’s marketplace is separate and not required for this install. Maintainer catalog notes: [DIRECTORY.md](DIRECTORY.md).
+
+### How do I connect any MCP client to CloudSprite?
+
+| Setting | Value |
+|-|-|
+| Server URL | `https://api.cloudsprite.io/mcp` |
+| Transport | Streamable HTTP |
+| OAuth discovery | `https://api.cloudsprite.io/.well-known/oauth-authorization-server` |
+
+The client must discover authorization, token, and JWKS URLs from that metadata. Do not hard-code those hosts, and do not put a client secret or API key in the config.
+
+```json
+{
+  "mcpServers": {
+    "cloudsprite": {
+      "type": "streamable-http",
+      "url": "https://api.cloudsprite.io/mcp"
+    }
+  }
+}
+```
+
+Some clients use `"type": "http"` or a bare `"url"` field for the same remote server.
+
+### How do I connect ChatGPT to CloudSprite?
+
+ChatGPT connectors are **coming soon**. Do not add CloudSprite as a ChatGPT custom connector yet — that OAuth redirect is not registered. Use Claude Code, Cursor, Copilot, Codex, Grok, or a generic MCP client today.
 
 ## What it does
 
