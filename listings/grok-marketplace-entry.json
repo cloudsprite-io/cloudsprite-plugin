@@ -1,10 +1,11 @@
 {
   "name": "cloudsprite",
   "description": "Talk to CloudSprite as the signed-in user: search datasets and docs, set org/team/project scope, and file product feedback.",
+  "category": "development",
   "source": {
     "source": "url",
     "url": "https://github.com/cloudsprite-io/cloudsprite-plugin.git",
-    "sha": "b65c2874e35630deab32045dc2f23a117fa4533a"
+    "sha": "4c474d082ae3c8bcb68822f9c147f15656d35dd1"
   },
   "homepage": "https://github.com/cloudsprite-io/cloudsprite-plugin",
   "keywords": ["cloudsprite", "cloudsprite mcp", "s-parameters", "mixed-mode"],
