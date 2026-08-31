@@ -1,4 +1,8 @@
-# Official MCP Registry (do not publish until the promote gate is green)
+# Official MCP Registry
+
+**Published 2026-08-31:** `io.github.cloudsprite-io/cloudsprite` version `0.1.3`
+is live on `https://registry.modelcontextprotocol.io`. Description must stay
+≤100 characters (registry 422 otherwise).
 
 Packet: [server.json](server.json)
 
@@ -10,7 +14,7 @@ Remote-only entries do **not** need an npm package. Do not add `headers` for an 
 
 Optional later: DNS namespace `io.cloudsprite/mcp` after proving `cloudsprite.io` (TXT `_mcp-server-name.cloudsprite.io` or whatever `mcp-publisher login dns` prints). GitHub namespace is enough for the first publish.
 
-## Commands (copy-paste when the gate is green)
+## Republish (version bump only)
 
 ```text
 brew install mcp-publisher   # or the release tarball from modelcontextprotocol/registry
