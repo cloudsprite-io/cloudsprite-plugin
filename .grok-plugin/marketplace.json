@@ -25,9 +25,11 @@
         "test and measurement",
         "mixed-mode"
       ],
+      "category": "development",
       "domains": [
         "cloudsprite.io",
-        "api.cloudsprite.io"
+        "api.cloudsprite.io",
+        "docs.cloudsprite.io"
       ]
     }
   ]

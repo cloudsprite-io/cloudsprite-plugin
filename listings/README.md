@@ -1,9 +1,9 @@
 # Listing packets — do not submit yet
 
-Prepared for api#303 / api#322. **Do not submit any of these until the
-api/app `development` → `main` promote lands** so production
-`https://api.cloudsprite.io/mcp` serves MCP with the merged OAuth and quota
-fixes (api#302 / #315 / #317 / #143).
+Prepared for api#303 / api#322. Prod MCP OAuth is live (2026-08-31):
+`https://api.cloudsprite.io/.well-known/oauth-authorization-server` returns 200
+JSON and `/mcp` returns 401 until the client finishes PKCE. Claude directory
+forms still need the demo org, icon, and screenshots before submit.
 
 Self-serve GitHub install can stay:
 

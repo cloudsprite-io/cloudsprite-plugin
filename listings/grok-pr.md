@@ -1,14 +1,19 @@
-# Grok marketplace PR (do not open until the promote gate is green)
+# Grok marketplace PR
 
 Fork https://github.com/xai-org/plugin-marketplace, branch from `main`, add
 **one** remote entry (do not vendor files under `external_plugins/`).
 
+Prod MCP OAuth is live (2026-08-31): discovery at
+`https://api.cloudsprite.io/.well-known/oauth-authorization-server` returns 200.
+Grok CLI `mcp doctor` reaches the server and fails at `AuthorizationRequired`
+until the user authenticates in the TUI (`/mcps` then `i`). Tokens land in
+`~/.grok/mcp_credentials.json`.
+
 ## Pin
 
 `source.sha` must be the full 40-char commit of `cloudsprite-io/cloudsprite-plugin`
-`main`. Packet authoring pin (update after listings merge):
-
-`b65c2874e35630deab32045dc2f23a117fa4533a`
+`main`. Update [grok-marketplace-entry.json](grok-marketplace-entry.json) after
+the payload commit lands:
 
 ```text
 git ls-remote https://github.com/cloudsprite-io/cloudsprite-plugin.git refs/heads/main
@@ -29,5 +34,6 @@ PR title: `Add CloudSprite plugin (remote SHA pin)`
 Do not use a personal-account `source.url`. Do not pin `main` or tag `v0.1.3`
 as the SHA — pin the commit.
 
-Before opening: confirm Grok token-storage parity (Claude stores OAuth natively;
-Grok behavior still unverified per api#303).
+Grok token storage: CLI `mcp doctor` returns `AuthorizationRequired` until the
+user signs in via TUI `/mcps` then `i`. Tokens are written to
+`~/.grok/mcp_credentials.json`.
