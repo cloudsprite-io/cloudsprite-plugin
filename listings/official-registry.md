@@ -8,7 +8,7 @@ Packet: [server.json](server.json)
 
 - Name: `io.github.cloudsprite-io/cloudsprite` (GitHub-org namespace; `mcp-publisher login github` as a `cloudsprite-io` org member)
 - Remote: Streamable HTTP `https://api.cloudsprite.io/mcp`
-- Version: `0.1.3` (bump with `plugin.json` on the next tagged plugin release)
+- Version: `0.1.4` (bump with `plugin.json` on the next tagged plugin release)
 
 Remote-only entries do **not** need an npm package. Do not add `headers` for an API key — clients must use OAuth discovery.
 

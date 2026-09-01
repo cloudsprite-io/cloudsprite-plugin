@@ -2,7 +2,7 @@
 
 Fill-in answers for the Claude plugin directory form and the Grok SHA-pin PR. **Do not submit either listing until production `https://api.cloudsprite.io/mcp` serves MCP (OAuth + rate limits).** Self-serve GitHub install (`/plugin marketplace add cloudsprite-io/cloudsprite-plugin`) can stay.
 
-Registry / PulseMCP / mcp.so / Grok JSON packets: [listings/](listings/). Grok pin in this file is the tagged `v0.1.3` SHA; the listings packet tracks current `main` and must be re-pinned after that branch merges.
+Registry / PulseMCP / mcp.so / Grok JSON packets: [listings/](listings/). Grok pin in this file is the tagged `v0.1.4` SHA; the listings packet tracks current `main` and must be re-pinned after that branch merges.
 
 Submitter: a CloudSprite org owner. Forms:
 
@@ -20,7 +20,7 @@ Run `claude plugin validate --strict .` and `scripts/audit.sh` before submitting
 | Plugin name / slug | `cloudsprite` |
 | Display name | CloudSprite |
 | GitHub repository | https://github.com/cloudsprite-io/cloudsprite-plugin |
-| Version | `0.1.3` (tag `v0.1.3`) |
+| Version | `0.1.4` (tag `v0.1.4`) |
 | License | MIT |
 | Homepage | https://cloudsprite.io |
 | Documentation | https://docs.cloudsprite.io |
@@ -34,7 +34,7 @@ Run `claude plugin validate --strict .` and `scripts/audit.sh` before submitting
 
 ### Long description (paste)
 
-CloudSprite is a measurement-data platform for RF and signal-integrity work. This plugin connects Claude to the customer's CloudSprite account over remote MCP (Streamable HTTP). After OAuth, the model can search datasets, traces (summaries only), notebooks, and scripts in the bound org/team/project; search product docs and the Python SDK catalog; run mixed-mode and waveform-QC skills; and file confidential product feedback.
+CloudSprite is a measurement-data platform for RF and signal-integrity work. This plugin connects Claude to the customer's CloudSprite account over remote MCP (Streamable HTTP). After OAuth, the model can search datasets, traces (summaries only), notebooks, and scripts in the bound org/team/project; search product docs and the Python SDK catalog; run mixed-mode and waveform-QC skills; sync the team's instruction files into local rules files; and file confidential product feedback.
 
 The plugin is **read-only** plus `submit_feedback`. It does not mutate datasets, tags, notebooks, or scripts. There are no API keys or tracker tokens in the repository. OAuth tokens stay in the client.
 
@@ -75,7 +75,8 @@ OAuth 2.1 with PKCE. `token_endpoint_auth_methods_supported: none` (public clien
 2. "Set my CloudSprite scope to the team and project I pick, then show me what I can see."
 3. "Walk me through mixed-mode SDD21 from these four port-pair S2P files. Confirm the port mapping first."
 4. "Find outlier S21 traces in this batch using pairwise Pearson correlation."
-5. "/feedback the S2P export drops comments"
+5. "/sync-context — pull my team's CloudSprite instruction files into this repo"
+6. "/feedback the S2P export drops comments"
 
 ### Screenshots to capture (attach in the form)
 
@@ -123,7 +124,7 @@ python3 scripts/generate-plugin-index.py --check
 
 PR title: `Add CloudSprite plugin (remote SHA pin)`.
 
-Do not vendor files under `external_plugins/`. Do not use a personal-account source. Pin a commit, not `main` or `v0.1.3`.
+Do not vendor files under `external_plugins/`. Do not use a personal-account source. Pin a commit, not `main` or `v0.1.4`.
 
 ## What this plugin is not
 

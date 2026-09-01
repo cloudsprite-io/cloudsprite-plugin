@@ -102,12 +102,13 @@ Claude Code honors `CLOUDSPRITE_MCP_URL` if the client process has it set (`${CL
 ## Skills
 
 | Skill | Slash | Purpose |
-|-|-|
+|-|-|-|
 | `feedback` | `/feedback` | Confirm text, then call MCP `submit_feedback` |
 | `platform-howtos` | `/platform-howtos` | Sign-in, scope, and how to use CloudSprite from the assistant |
 | `datasets` | `/datasets` | Find datasets, parameters, tags, and notebooks (read) |
 | `mixed-mode-analysis` | `/mixed-mode-analysis` | Differential / common-mode S-parameters from 2-port pairs |
 | `waveform-correlation` | `/waveform-correlation` | Pairwise Pearson QC across repeated traces |
+| `sync-context` | `/sync-context` | Pull team and project instruction files into local rules files |
 
 ## Network endpoints
 
@@ -135,7 +136,7 @@ If `CLOUDSPRITE_MCP_URL` is set, discovery and token endpoints follow that host 
 
 ## Releases
 
-Git tags are `v` + the `version` in `plugin.json` (currently `0.1.3`). Maintainers publish with `scripts/publish.sh` after `scripts/audit.sh` passes. Republishing the same tag is a no-op if `HEAD` still matches; a different tree at the same version fails.
+Git tags are `v` + the `version` in `plugin.json` (currently `0.1.4`). Maintainers publish with `scripts/publish.sh` after `scripts/audit.sh` passes. Republishing the same tag is a no-op if `HEAD` still matches; a different tree at the same version fails.
 
 ## License
 
