@@ -118,7 +118,7 @@ Public CloudSprite plugin $TAG.
 
 - Slug: \`cloudsprite\` (immutable once a marketplace lists it)
 - MCP: \`https://api.cloudsprite.io/mcp\`
-- Skills: datasets, mixed-mode-analysis, waveform-correlation, platform-howtos, feedback
+- Skills: datasets, mixed-mode-analysis, waveform-correlation, platform-howtos, sync-context, feedback
 - License: MIT
 
 Install: \`/plugin marketplace add cloudsprite-io/cloudsprite-plugin\` then \`/plugin install cloudsprite@cloudsprite\`

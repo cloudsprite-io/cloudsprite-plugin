@@ -31,7 +31,7 @@ python3 scripts/generate-plugin-index.py --check
 
 PR title: `Add CloudSprite plugin (remote SHA pin)`
 
-Do not use a personal-account `source.url`. Do not pin `main` or tag `v0.1.3`
+Do not use a personal-account `source.url`. Do not pin `main` or tag `v0.1.4`
 as the SHA — pin the commit.
 
 Grok token storage: CLI `mcp doctor` returns `AuthorizationRequired` until the
