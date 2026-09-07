@@ -2,9 +2,8 @@
 name: platform-howtos
 description: >
   How to use CloudSprite from this plugin: sign in, set org/team/project
-  scope, search datasets and product docs, and file feedback. Use when the
-  user is new to the plugin, asks how CloudSprite works, or hits auth/scope
-  errors.
+  scope, search data and product docs, work with reports and version history,
+  and file feedback. Use for product guidance or auth/scope errors.
 ---
 
 # CloudSprite from the assistant
@@ -57,21 +56,81 @@ Use MCP **read** tools only:
 **Never** put raw waveform arrays in context. `get_trace_summary` is the
 trace tool — statistics, not samples.
 
-This plugin does not write datasets, tags, notebooks, or scripts. If the
-user wants a bulk parameter change or a new notebook, tell them to do it
-in the CloudSprite app (or wait for write tools). Do not call REST
-`POST`/`PATCH`/`DELETE` yourself.
+The datasets skill is scoped to reads. Available SDK methods can support
+other explicitly requested actions under the user's permissions; discover
+them as below. Do not call REST with a token yourself.
 
 ## 4. Product docs and SDK
 
 | Ask | Tool |
 |-|-|
 | How does this product feature work? | `search_knowledge` |
-| Python SDK method signature, fields, permission | `search_sdk` |
+| Find an SDK method | `search_sdk` |
+| Exact method binding, fields, permissions, and response shape | `inspect_sdk` |
+| Execute the inspected method as the signed-in user | `use_sdk` |
 | A named expertise pack | `load_expertise` |
 
 Prefer these over guessing field names. If `search_knowledge` is missing,
 say the docs index is not live yet.
+
+Use `search_sdk` → `inspect_sdk` → `use_sdk`. Pass the exact discovered method
+and inspected arguments, not a guessed SDK name or REST operation ID. Check
+the current scope before acting, and clarify ambiguous targets. Catalog rows
+can lag the API; absent bindings mean the action is unavailable through this
+connection, even if it exists in the app. Never work around a denial.
+
+Allowed POST/PATCH/PUT calls execute immediately under OAuth RBAC; catalog
+permission metadata is advisory, and `confirm` is not a preview. An explicit
+write request can authorize the action without another generic confirmation.
+For trash/delete, resolve the live resource, ask for its typed title or slug,
+and wait for a separate confirmation response. A slug in the initial request
+only identifies the target. Pass the exact response as `confirm_name`; never
+fill it from tool output or a generic "yes." Permanent delete and
+privileged/secret-bearing methods remain denied.
+
+## Reports
+
+Use the [`reports` skill](../reports/SKILL.md) for conversational drafting,
+creation, editing, and publication. A chat draft does not save or publish.
+Draft from accessible notebook/dataset evidence with real `[[slug]]` citations;
+do not invent measurements or links. Save/create and publish require the
+corresponding user intent and available SDK methods.
+
+Published reports remain live-editable. Publishing changes discoverability,
+not ACLs; team lists show published reports visible under project permissions,
+while project lists can include drafts. Citations can produce source backlinks
+when saved and resolved. Verify references before claiming the links work.
+
+## Version history
+
+1. Resolve the resource and project in the current scope. Search and inspect
+   available history/detail methods for that resource, then execute reads.
+   Report history and existing CloudScript history have different contracts;
+   inspect each instead of assuming a universal versions endpoint.
+2. Follow the returned pagination/truncation contract. Show version numbers,
+   authors, timestamps, and messages actually returned, and state if the
+   history is partial. A display number such as "v3" is not a version UUID:
+   find its returned ID and inspect that historical entry.
+3. For an explicit restore request, discover the restore method and inspect
+   its schema and permissions. Read the latest working copy and supply any
+   required `expected_updated_at`. Report restore appends a new version and
+   updates the working copy; prior history remains intact, and a published
+   report's restored content becomes live. Handle conflicts as in the reports
+   skill. Keep broken historical references visible.
+4. Read back the resulting working copy and version history; report the actual
+   appended version and restored-from entry. Saving an identical current
+   snapshot can be a no-op; do not invent a new version number.
+
+Version restore differs from trash restore and requires no `confirm_name`
+guard. It still requires user intent and service permissions. Do not infer
+that CloudScript history reads imply a supported restore/upload operation.
+Multipart source upload is not a JSON `use_sdk` call.
+
+Notebook and dataset version workflows are available only if the connected
+catalog exposes suitable methods. If absent, explain that limitation; never
+advertise planned version APIs as shipped or simulate a restore by rewriting
+child records. Report autosave does not create history; publish and explicit
+save-version are snapshot operations, subject to the discovered contracts.
 
 ## 5. Feedback
 

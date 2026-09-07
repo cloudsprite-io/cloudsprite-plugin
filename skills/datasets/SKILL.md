@@ -4,7 +4,7 @@ description: >
   Query CloudSprite datasets, parameters, tags, and notebook membership
   through MCP read tools. Use when the user asks which datasets match a
   parameter or tag, what is on a dataset, or which notebooks contain a
-  trace. Read-only — do not modify data.
+  trace, or which reports cite a dataset. Read-only — do not modify data.
 ---
 
 # CloudSprite datasets (read)
@@ -54,8 +54,28 @@ For numeric shape (x-range, point count, min/max/mean, resonances) call
 ## Notebooks (read)
 
 `list_notebooks` / `get_notebook` show membership and graph contents.
-Do not create notebooks or bulk-add traces — those are writes, and this
-plugin's MCP is read-only.
+Do not create notebooks or bulk-add traces in this read workflow.
+
+## Which reports cite this dataset?
+
+Resolve the dataset in the bound project with `get_dataset` and retain its
+real ID/slug. Use `search_sdk` to find the dataset report-backlinks read method,
+then `inspect_sdk` for its exact method name, arguments, permissions, and
+response shape before calling `use_sdk`. Do not guess a method name from an
+API route or search report body text as a substitute for the reference graph.
+
+Show returned report titles/slugs and publication state when available.
+Use returned links or verified named routes only. Follow the inspected
+pagination contract and flag truncated/partial results. A detail `report_count`
+is a summary, not proof that a single page contains every report. Zero visible
+results means no reports were returned for this user and scope, not proof of
+no citations across all projects or users. Do not enumerate inaccessible reports.
+
+If the catalog lacks the backlinks method, say this connection cannot list
+backlinks yet; do not fabricate matches or bypass it with REST. Notebook
+backlinks follow the same discovery and visibility rules. To draft a report
+from these sources, use the [`reports` skill](../reports/SKILL.md); this read
+request alone does not authorize creating a report.
 
 ## What you must not do
 
@@ -65,8 +85,8 @@ plugin's MCP is read-only.
 - Invent ids
 - Query a team/project the user did not bind with `set_scope`
 
-If the user asks to change data, explain that this plugin is read-only
-and they should edit in the CloudSprite app. Offer to **show** what would
+If the user asks to change dataset data, explain that this skill covers reads
+and they can edit in the CloudSprite app. Offer to **show** what would
 match first (`search_datasets` preview).
 
 ## Reporting
