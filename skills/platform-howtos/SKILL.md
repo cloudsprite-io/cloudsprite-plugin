@@ -2,9 +2,9 @@
 name: platform-howtos
 description: >
   How to use CloudSprite from this plugin: sign in, set org/team/project
-  scope, search datasets and product docs, and file feedback. Use when the
-  user is new to the plugin, asks how CloudSprite works, or hits auth/scope
-  errors.
+  scope, search datasets and product docs, sync Mirafiles (instruction
+  files), and file feedback. Use when the user is new to the plugin, asks
+  how CloudSprite works, or hits auth/scope errors.
 ---
 
 # CloudSprite from the assistant
@@ -73,11 +73,11 @@ in the CloudSprite app (or wait for write tools). Do not call REST
 Prefer these over guessing field names. If `search_knowledge` is missing,
 say the docs index is not live yet.
 
-## 5. Team and project instructions
+## 5. Team and project Mirafiles (instruction files)
 
-Instruction files are markdown rules authored in the CloudSprite app — team
-files by a team manager, project files by a project manager. They are how a
-team gives every assistant session the same standing context.
+Mirafiles (instruction files) are markdown rules authored in the CloudSprite
+app — team files by a team manager, project files by a project manager. They
+are how a team gives every assistant session the same standing context.
 
 | Ask | Tool |
 |-|-|
