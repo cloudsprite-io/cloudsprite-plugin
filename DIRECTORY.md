@@ -36,7 +36,7 @@ Run `claude plugin validate --strict .` and `scripts/audit.sh` before submitting
 
 CloudSprite is a measurement-data platform for RF and signal-integrity work. This plugin connects Claude to the customer's CloudSprite account over remote MCP (Streamable HTTP). After OAuth, the model can search datasets, traces (summaries only), notebooks, and scripts in the bound org/team/project; search product docs and the Python SDK catalog; run mixed-mode and waveform-QC skills; and file confidential product feedback.
 
-The plugin is **read-only** plus `submit_feedback`. It does not mutate datasets, tags, notebooks, or scripts. There are no API keys or tracker tokens in the repository. OAuth tokens stay in the client.
+`use_sdk` runs as the signed-in user: allowed POST/PATCH/PUT execute immediately under their RBAC; trash/delete need a typed title or slug. Individual skills may still be read-scoped. There are no API keys or tracker tokens in the repository. OAuth tokens stay in the client.
 
 Install from GitHub (works before directory listing):
 
@@ -81,7 +81,7 @@ OAuth 2.1 with PKCE. `token_endpoint_auth_methods_supported: none` (public clien
 
 1. `/plugin marketplace add cloudsprite-io/cloudsprite-plugin` then `/plugin install cloudsprite@cloudsprite` succeeding.
 2. Client OAuth / CloudSprite sign-in in the browser.
-3. A read query (`search_datasets` or `get_scope`) returning the signed-in team's data.
+3. A read query (`search_sdk` or `get_scope`) returning the signed-in team's data.
 4. Optional: `/feedback` confirmation, then a filed-id result.
 
 Do **not** screenshot customer data from a paying tenant. Use the Anthropic test account (below).
