@@ -34,6 +34,13 @@ ALLOWLIST = {
     "DIRECTORY.md",
     "LICENSE",
     "README.md",
+    "listings/README.md",
+    "listings/grok-marketplace-entry.json",
+    "listings/grok-pr.md",
+    "listings/mcp-so.md",
+    "listings/official-registry.md",
+    "listings/pulsemcp.md",
+    "listings/server.json",
     "mcp.json",
     "plugin.json",
     "scripts/audit.sh",
@@ -42,6 +49,7 @@ ALLOWLIST = {
     "skills/feedback/SKILL.md",
     "skills/mixed-mode-analysis/SKILL.md",
     "skills/platform-howtos/SKILL.md",
+    "skills/sync-context/SKILL.md",
     "skills/waveform-correlation/SKILL.md",
 }
 CUSTOMER_SKILLS = [
@@ -49,6 +57,7 @@ CUSTOMER_SKILLS = [
     "feedback",
     "mixed-mode-analysis",
     "platform-howtos",
+    "sync-context",
     "waveform-correlation",
 ]
 
@@ -193,5 +202,5 @@ fi
 echo "audit: OK"
 echo "  slug:    cloudsprite"
 echo "  mcp:     $PROD_MCP"
-echo "  skills:  datasets feedback mixed-mode-analysis platform-howtos waveform-correlation"
+echo "  skills:  datasets feedback mixed-mode-analysis platform-howtos sync-context waveform-correlation"
 echo "  version: $(python3 -c 'import json; print(json.load(open("plugin.json"))["version"])')"
