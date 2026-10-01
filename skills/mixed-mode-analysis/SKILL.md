@@ -4,7 +4,7 @@ description: >
   Compute or explain mixed-mode (differential/common-mode) S-parameters from
   single-ended 2-port Touchstone pairs. Use for SDD/SCC/SDC/SCD, CMRR, port
   definitions, or balanced-device questions. Confirm port mapping before
-  any math. CloudSprite access is MCP reads only.
+  any math. This skill uses MCP reads only.
 ---
 
 # Mixed-mode S-parameter analysis
@@ -15,9 +15,10 @@ and for reading the source datasets in CloudSprite.
 **Reference:** Bert Simonovich, "A Guide for Single-Ended to Mixed-Mode
 S-Parameter Conversions," *Signal Integrity Journal*, July 2020.
 
-This plugin's MCP is **read-only**. You may inspect CloudSprite datasets
-and explain or compute locally. You may **not** publish new datasets or
-notebooks through MCP.
+This skill uses **reads only**. You may inspect CloudSprite datasets and
+explain or compute locally. Do not publish new datasets or notebooks
+through this skill. Allowed SDK writes exist elsewhere under the signed-in
+user's RBAC; this workflow does not use them.
 
 ## What mixed-mode is
 
@@ -56,9 +57,11 @@ wrong. Always verify mapping **before** arithmetic.
 
 With scope set (`set_scope`):
 
-- `search_datasets` for the four port-pair files (often a shared serial,
-  fixture, or `mixed_mode` / `port_pair` / `polarity` parameter)
-- `get_dataset` on each for parameters, filenames, and trace inventory
+- `search_sdk` → `inspect_sdk` → `use_sdk` for the four port-pair files
+  (often a shared serial, fixture, or `mixed_mode` / `port_pair` /
+  `polarity` parameter). There is no `search_datasets` / `get_dataset` tool.
+- Inspect Dataset.* on each for parameters, filenames, and trace inventory.
+  Confirm inspected `rest_path` is the dataset resource.
 
 Look for:
 
@@ -154,15 +157,14 @@ in dB can still look right; **phase is wrong**. Use the formulas above.
 ## CloudSprite (this plugin)
 
 1. `set_scope` to the team/project that holds the four files.
-2. `search_datasets` + `get_dataset` to identify the four sources and
-   confirm mapping (filenames, parameters).
+2. `search_sdk` → `inspect_sdk` → `use_sdk` to identify the four sources
+   and confirm mapping (filenames, parameters).
 3. `get_trace_summary` for x-range / point count — check the four files
    share a grid before combining.
 4. Raw S21 samples are **not** returned by MCP. If the user needs the
    actual conversion, they run it locally (scikit-rf, their files or SDK)
    with **their** credentials — never a token from this plugin.
-5. Do not `POST` datasets or notebooks. Say that publishing mixed-mode
-   results through the assistant is not in this release; they can upload
+5. Do not publish mixed-mode results through this skill; they can upload
    from the CloudSprite app.
 
 ## Touchstone reminders

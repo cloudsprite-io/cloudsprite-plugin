@@ -3,7 +3,8 @@ name: waveform-correlation
 description: >
   Detect outlier waveforms in a CloudSprite project with pairwise Pearson
   correlation and describe a clean average of the good traces. Use for
-  batch QC on S21, amplitude, or any repeated measurement. MCP is read-only.
+  batch QC on S21, amplitude, or any repeated measurement. This skill uses
+  MCP reads only.
 ---
 
 # Waveform correlation (QC)
@@ -11,9 +12,10 @@ description: >
 Pairwise Pearson correlation across traces in a CloudSprite project:
 score each trace, flag outliers, describe a clean average of the rest.
 
-MCP in this plugin is **read-only**. You can find traces and reason about
-shape from summaries. You cannot publish an average dataset or an outlier
-notebook through MCP.
+This skill uses **reads only**. You can find traces and reason about shape
+from summaries. Do not publish an average dataset or an outlier notebook
+through this skill. Allowed SDK writes exist elsewhere under the signed-in
+user's RBAC; this workflow does not use them.
 
 ## Pearson r for waveform QC
 
@@ -38,9 +40,10 @@ pollute the reference. Score pairwise, then average only the good traces.
 
 ### 1. Project and trace type
 
-`search_datasets` / `get_dataset` in the bound project. List trace names
-actually present, then ask which to correlate. If only one type exists
-across the set, use it.
+`search_sdk` → `inspect_sdk` → `use_sdk` on Dataset.* / list methods in the
+bound project (there is no `search_datasets` / `get_dataset` tool). List
+trace names actually present, then ask which to correlate. If only one type
+exists across the set, use it.
 
 ### 2. Which datasets
 
@@ -81,16 +84,19 @@ If **every** trace flags as an outlier, σ is too tight — say so.
 ## CloudSprite (this plugin)
 
 1. `set_scope` to the team/project.
-2. `search_datasets` with the batch/parameter/name filter.
-3. `get_dataset` for ids, names, parameters, trace inventory.
+2. `search_sdk` (`query` for the batch/parameter/name filter, `access="read"`)
+   → `inspect_sdk` (`method` = catalog qualname) → `use_sdk` (`method`, `args`
+   from inspect). Confirm inspected `rest_path` is the dataset resource.
+3. Inspect Dataset.* inventory (`Dataset.traces` / params) for ids, names,
+   parameters, trace inventory.
 4. `get_trace_summary` for x-range, point count, min/max/mean — enough
    to spot a wildly different file, **not** enough to compute Pearson r
    (that needs the samples).
 5. For the actual r matrix the user runs local code (NumPy/SciPy) on
    files they already have, or the Python SDK with **their** credentials.
    This plugin has no token and does not return raw arrays.
-6. Do not publish the average or an outlier notebook via MCP. Point them
-   at the CloudSprite app to upload results in this release.
+6. Do not publish the average or an outlier notebook in this skill. Point
+   them at the CloudSprite app to upload results.
 
 ## Minimum checks
 
