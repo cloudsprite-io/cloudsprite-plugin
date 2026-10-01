@@ -89,7 +89,7 @@ Execute a catalog row only when the inspected `rest_path` and `http_method`
 are for the resource you intend (Reports: under `/api/reports`). A top
 search hit on another resource (`Client.publish` → POST `/api/datasets/`,
 `Dataset.update`) is not a substitute; treat it as unavailable. Catalog
-rows can lag the API; absent bindings mean the action is unavailable through
+rows can lag the API; absent catalog rows mean the action is unavailable through
 this connection, even if it exists in the app. Never work around a denial.
 
 Reports methods are catalog rows with a `rest_path` under `/api/reports`. If
