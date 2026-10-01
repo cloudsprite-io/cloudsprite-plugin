@@ -18,12 +18,18 @@ arrays.
 
 ## Catalog gate
 
-Reports methods require **cloudsprite-py Reports bindings** in the ingested
-catalog (`rest_path` under `/api/reports`). Until those exist, **stop** after
-search/inspect with a clear message: the connected catalog has no Reports
-methods; a chat draft from accessible sources is still allowed. Do not execute
-a near-miss row (`Client.publish` is POST `/api/datasets/`; `Client.report_run`
-is script runs; `Dataset.update` is datasets).
+Reports methods are catalog rows whose inspected `rest_path` is under
+`/api/reports`. Search and inspect each operation before using it. If the
+connected catalog returns no such row for it, **stop** with a clear message:
+that Reports method is not available through this connection (it may still
+exist in the app). A chat draft from accessible sources is still allowed. Do
+not execute a near-miss row (`Client.publish` is POST `/api/datasets/`;
+`Client.report_run` is script runs; `Dataset.update` is datasets).
+
+**Attachments and multipart upload are not supported.** `use_sdk` sends JSON
+only, so this skill cannot add, replace, or remove report attachments or
+upload files. Listing a report's attachments is a read and is fine. Send the
+user to the CloudSprite app for uploads, and never invent an attachment.
 
 ## SDK tools
 
@@ -72,9 +78,10 @@ Do not retry permission failures in another tenant or under another identity.
   `search_sdk` (`query` like `"Dataset"` / `"Notebook"` / `"list datasets"`,
   `access="read"`) → `inspect_sdk` (`method` = returned qualname) → `use_sdk`
   (`method`, `args` from inspect). Qualnames that often exist: `Client.datasets`,
-  `Project.datasets`, `Dataset.traces`, `Dataset.params`, `Dataset.slug`,
-  `Project.notebooks`, `Notebook.datasets`, `Notebook.traces`. Always inspect
-  first. Use `get_trace_summary` for numeric shape.
+  `Project.datasets`, `Dataset.traces`, `Dataset.params`, `Project.notebooks`,
+  `Notebook.datasets`, `Notebook.traces`. Always inspect first. Read `slug`
+  from the returned dataset or notebook row; `Dataset.slug` is a property, not
+  a callable method. Use `get_trace_summary` for numeric shape.
 - Notebook membership is not a measurement result. Use trace summaries or
   accessible saved measurements to support quantitative statements. Respect
   snapshot versus live-source provenance; do not label live values as the

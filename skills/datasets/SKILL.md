@@ -39,8 +39,9 @@ substitute. This skill does not write.
 Typical queries: `query="list datasets"` or `"Dataset"` with `access="read"`;
 then `query="Notebook"` for notebooks. Qualnames that often exist:
 `Client.datasets`, `Project.datasets`, `Dataset.traces`, `Dataset.params`,
-`Dataset.slug`, `Project.notebooks`, `Notebook.datasets`, `Notebook.traces`.
-Always inspect before calling — do not guess.
+`Project.notebooks`, `Notebook.datasets`, `Notebook.traces`. Always inspect
+before calling — do not guess. A dataset's `slug` is a field on the returned
+row, not a callable method.
 
 ## Finding datasets
 

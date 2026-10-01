@@ -51,7 +51,7 @@ There are no `search_datasets`, `get_dataset`, `list_notebooks`, or
 | Ask | Tool |
 |-|-|
 | Which datasets match a name, parameter, or tag? | `search_sdk` → `inspect_sdk` → `use_sdk` on Dataset.* / list methods (`Client.datasets`, `Project.datasets`) |
-| Parameters, tags, traces, provenance for one dataset | same path on Dataset.* (`Dataset.traces`, `Dataset.params`, `Dataset.slug`) |
+| Parameters, tags, traces, provenance for one dataset | same path on Dataset.* (`Dataset.traces`, `Dataset.params`; the `slug` is a field on the returned row) |
 | Trace shape (range, points, min/max/mean) | `get_trace_summary` |
 | Notebooks in the project | `search_sdk` → `inspect_sdk` → `use_sdk` on Notebook.* / `Project.notebooks` |
 | Saved scripts | `list_scripts` / `get_script` |
@@ -92,8 +92,9 @@ search hit on another resource (`Client.publish` → POST `/api/datasets/`,
 rows can lag the API; absent bindings mean the action is unavailable through
 this connection, even if it exists in the app. Never work around a denial.
 
-Reports methods require cloudsprite-py Reports bindings; until `rest_path`
-values under `/api/reports` appear, stop with that message.
+Reports methods are catalog rows with a `rest_path` under `/api/reports`. If
+search finds none for the operation you need, stop and say that Reports method
+is not available through this connection.
 
 Allowed POST/PATCH/PUT calls execute immediately under OAuth RBAC; catalog
 permission metadata is advisory, and `confirm` is not a preview. An explicit
