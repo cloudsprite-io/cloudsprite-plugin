@@ -20,7 +20,7 @@ Run `claude plugin validate --strict .` and `scripts/audit.sh` before submitting
 | Plugin name / slug | `cloudsprite` |
 | Display name | CloudSprite |
 | GitHub repository | https://github.com/cloudsprite-io/cloudsprite-plugin |
-| Version | `0.1.3` (published; no new tag in this PR) |
+| Version | `0.1.3` (published) |
 | License | MIT |
 | Homepage | https://cloudsprite.io |
 | Documentation | https://docs.cloudsprite.io |
