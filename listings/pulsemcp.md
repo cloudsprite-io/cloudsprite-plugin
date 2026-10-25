@@ -16,7 +16,7 @@ Do **not** email hello@pulsemcp.com until the prod promote gate is green.
 - Transport: Streamable HTTP
 - Auth: OAuth 2.1 + PKCE (no API key)
 - Display name: CloudSprite
-- Short description: Talk to CloudSprite as the signed-in user: search datasets and docs, set org/team/project scope, and file product feedback.
+- Short description: Search your CloudSprite test and measurement data, product docs and SDK catalog from a coding agent, under your own permissions.
 - Docs: https://docs.cloudsprite.io/platform/connect-your-ai/
 - Official registry name: `io.github.cloudsprite-io/cloudsprite` ([server.json](server.json))
 

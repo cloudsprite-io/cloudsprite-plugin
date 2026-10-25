@@ -9,6 +9,8 @@ Grok CLI `mcp doctor` reaches the server and fails at `AuthorizationRequired`
 until the user authenticates in the TUI (`/mcps` then `i`). Tokens land in
 `~/.grok/mcp_credentials.json`.
 
+The entry's description and keywords were updated for the current positioning. PR #453 needs the same change before merge.
+
 ## Pin
 
 `source.sha` must be the full 40-char commit of `cloudsprite-io/cloudsprite-plugin`

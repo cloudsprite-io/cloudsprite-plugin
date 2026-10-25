@@ -2,7 +2,7 @@
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "io.github.cloudsprite-io/cloudsprite",
   "title": "CloudSprite",
-  "description": "Signed-in CloudSprite: search datasets and docs, set org/team/project scope, file feedback.",
+  "description": "Search CloudSprite test and measurement data, docs and SDK catalog under your own permissions.",
   "websiteUrl": "https://docs.cloudsprite.io/platform/connect-your-ai/",
   "repository": {
     "url": "https://github.com/cloudsprite-io/cloudsprite-plugin",

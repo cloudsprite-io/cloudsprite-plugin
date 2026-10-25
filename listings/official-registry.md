@@ -4,7 +4,7 @@
 is live on `https://registry.modelcontextprotocol.io`. Description must stay
 ≤100 characters (registry 422 otherwise).
 
-Packet: [server.json](server.json)
+Packet: [server.json](server.json). The live 0.1.3 entry still carries the earlier description; the positioning text in `server.json` reaches the registry on the next version bump and republish.
 
 - Name: `io.github.cloudsprite-io/cloudsprite` (GitHub-org namespace; `mcp-publisher login github` as a `cloudsprite-io` org member)
 - Remote: Streamable HTTP `https://api.cloudsprite.io/mcp`

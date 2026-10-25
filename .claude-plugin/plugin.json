@@ -3,7 +3,7 @@
   "name": "cloudsprite",
   "displayName": "CloudSprite",
   "version": "0.1.3",
-  "description": "Talk to CloudSprite as the signed-in user: search datasets and docs, set org/team/project scope, and file product feedback.",
+  "description": "Search your CloudSprite test and measurement data, product docs and SDK catalog from a coding agent, under your own permissions.",
   "author": {
     "name": "CloudSprite",
     "url": "https://cloudsprite.io"
@@ -13,10 +13,10 @@
   "license": "MIT",
   "keywords": [
     "cloudsprite",
-    "s-parameters",
-    "rf",
-    "signal-integrity",
     "test-and-measurement",
+    "measurement-data",
+    "instrumentation",
+    "data-management",
     "mcp"
   ]
 }
