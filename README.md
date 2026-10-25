@@ -1,6 +1,10 @@
 # CloudSprite plugin
 
-Public plugin for [CloudSprite](https://cloudsprite.io). One repo, one plugin slug (`cloudsprite`), for Claude Code, Grok Build, and [Agent Plugins](https://agent-plugins.org/specification) clients (Cursor, GitHub Copilot, VS Code, Codex, and others).
+Public plugin for [CloudSprite](https://cloudsprite.io), the source of truth for test and measurement data.
+
+CloudSprite is vendor-agnostic. Orb captures from lab equipment across vendors, and every dataset keeps its metadata, parameters and tags, with role-based access. CloudScripts, Reports and the Python SDK work on that same data. This plugin lets coding agents (Claude Code, Codex, Cursor, Grok and other MCP clients) find that data and look up the Python SDK, under the permissions of the user who signs in.
+
+One repo, one plugin slug (`cloudsprite`), for Claude Code, Grok Build, and [Agent Plugins](https://agent-plugins.org/specification) clients (Cursor, GitHub Copilot, VS Code, Codex, and others).
 
 The plugin talks to **production** CloudSprite over remote MCP. There are no API keys, GitLab tokens, Linear tokens, or other secrets in this repository. OAuth tokens stay in the **client**.
 
@@ -76,11 +80,11 @@ ChatGPT connectors are **coming soon**. Do not add CloudSprite as a ChatGPT cust
 
 ## What it does
 
-After you sign in and set scope, the model can:
+After you sign in and set scope, the model works under your CloudSprite permissions and can:
 
 - Read org / team / project context (`whoami` / `get_scope`, `list_orgs`, `list_teams`, `list_projects`, `set_scope`)
 - Search datasets, traces (summaries only), notebooks, and scripts
-- Search CloudSprite product docs and the SDK catalog (`search_knowledge`, `search_sdk`)
+- Search CloudSprite product docs and the Python SDK catalog (`search_knowledge`, `search_sdk`)
 - File a bug or feature request (`/feedback` → MCP `submit_feedback`)
 
 This release is **read-only** plus feedback. It does not mutate datasets, tags, notebooks, or scripts.
@@ -106,8 +110,8 @@ Claude Code honors `CLOUDSPRITE_MCP_URL` if the client process has it set (`${CL
 | `feedback` | `/feedback` | Confirm text, then call MCP `submit_feedback` |
 | `platform-howtos` | `/platform-howtos` | Sign-in, scope, and how to use CloudSprite from the assistant |
 | `datasets` | `/datasets` | Find datasets, parameters, tags, and notebooks (read) |
-| `mixed-mode-analysis` | `/mixed-mode-analysis` | Differential / common-mode S-parameters from 2-port pairs |
-| `waveform-correlation` | `/waveform-correlation` | Pairwise Pearson QC across repeated traces |
+| `mixed-mode-analysis` | `/mixed-mode-analysis` | Example analysis skill: differential / common-mode S-parameters from 2-port pairs |
+| `waveform-correlation` | `/waveform-correlation` | Example analysis skill: pairwise Pearson QC across repeated traces |
 
 ## Network endpoints
 

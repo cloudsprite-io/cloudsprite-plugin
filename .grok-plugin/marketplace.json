@@ -1,6 +1,6 @@
 {
   "name": "cloudsprite",
-  "description": "CloudSprite plugin marketplace",
+  "description": "CloudSprite plugin marketplace for coding agents",
   "owner": {
     "name": "CloudSprite",
     "email": "support@cloudsprite.io",
@@ -9,7 +9,7 @@
   "plugins": [
     {
       "name": "cloudsprite",
-      "description": "Talk to CloudSprite as the signed-in user: search datasets and docs, set org/team/project scope, and file product feedback.",
+      "description": "Search your CloudSprite test and measurement data, product docs and SDK catalog from a coding agent, under your own permissions.",
       "version": "0.1.3",
       "author": {
         "name": "CloudSprite",
@@ -19,11 +19,11 @@
       "homepage": "https://github.com/cloudsprite-io/cloudsprite-plugin",
       "keywords": [
         "cloudsprite",
-        "s-parameters",
-        "rf",
-        "signal integrity",
         "test and measurement",
-        "mixed-mode"
+        "measurement data",
+        "instrumentation",
+        "data management",
+        "mcp"
       ],
       "category": "development",
       "domains": [

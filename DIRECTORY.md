@@ -29,12 +29,12 @@ Run `claude plugin validate --strict .` and `scripts/audit.sh` before submitting
 | Support | support@cloudsprite.io |
 | Privacy contact | privacy@cloudsprite.io |
 | Author | CloudSprite (Brushfield Ventures LLC d/b/a CloudSprite) |
-| Short description | Talk to CloudSprite as the signed-in user: search datasets and docs, set org/team/project scope, and file product feedback. |
-| Category | Test and measurement / RF / signal integrity |
+| Short description | Search your CloudSprite test and measurement data, product docs and SDK catalog from a coding agent, under your own permissions. |
+| Category | Test and measurement |
 
 ### Long description (paste)
 
-CloudSprite is a measurement-data platform for RF and signal-integrity work. This plugin connects Claude to the customer's CloudSprite account over remote MCP (Streamable HTTP). After OAuth, the model can search datasets, traces (summaries only), notebooks, and scripts in the bound org/team/project; search product docs and the Python SDK catalog; run mixed-mode and waveform-QC skills; and file confidential product feedback.
+CloudSprite is the source of truth for test and measurement data. It is vendor-agnostic: Orb captures from lab equipment across vendors, and each dataset carries metadata, parameters and tags, with role-based access. CloudScripts, Reports and the Python SDK work on the same data. This plugin connects Claude to the customer's CloudSprite account over remote MCP (Streamable HTTP). After OAuth, the model works under the signed-in user's permissions. It can search datasets, traces (summaries only), notebooks and scripts in the bound org/team/project, search product docs and the Python SDK catalog, run the mixed-mode and waveform-QC skills, and file confidential product feedback.
 
 The plugin is **read-only** plus `submit_feedback`. It does not mutate datasets, tags, notebooks, or scripts. There are no API keys or tracker tokens in the repository. OAuth tokens stay in the client.
 
@@ -109,14 +109,14 @@ python3 scripts/generate-plugin-index.py --check
 ```json
 {
   "name": "cloudsprite",
-  "description": "Talk to CloudSprite as the signed-in user: search datasets and docs, set org/team/project scope, and file product feedback.",
+  "description": "Search your CloudSprite test and measurement data, product docs and SDK catalog from a coding agent, under your own permissions.",
   "source": {
     "source": "url",
     "url": "https://github.com/cloudsprite-io/cloudsprite-plugin.git",
     "sha": "PIN_SHA_40_LOWERCASE"
   },
   "homepage": "https://github.com/cloudsprite-io/cloudsprite-plugin",
-  "keywords": ["cloudsprite", "cloudsprite mcp", "s-parameters", "mixed-mode"],
+  "keywords": ["cloudsprite", "cloudsprite mcp", "test and measurement", "measurement data", "data management"],
   "domains": ["cloudsprite.io", "api.cloudsprite.io", "docs.cloudsprite.io"]
 }
 ```

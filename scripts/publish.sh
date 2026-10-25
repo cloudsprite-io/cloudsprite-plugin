@@ -64,14 +64,14 @@ import json, sys
 sha = sys.argv[1]
 entry = {
     "name": "cloudsprite",
-    "description": "Talk to CloudSprite as the signed-in user: search datasets and docs, set org/team/project scope, and file product feedback.",
+    "description": "Search your CloudSprite test and measurement data, product docs and SDK catalog from a coding agent, under your own permissions.",
     "source": {
         "source": "url",
         "url": "https://github.com/cloudsprite-io/cloudsprite-plugin.git",
         "sha": sha,
     },
     "homepage": "https://github.com/cloudsprite-io/cloudsprite-plugin",
-    "keywords": ["cloudsprite", "cloudsprite mcp", "s-parameters", "mixed-mode"],
+    "keywords": ["cloudsprite", "cloudsprite mcp", "test and measurement", "measurement data", "data management"],
     "domains": ["cloudsprite.io", "api.cloudsprite.io", "docs.cloudsprite.io"],
 }
 print(json.dumps(entry, indent=2))

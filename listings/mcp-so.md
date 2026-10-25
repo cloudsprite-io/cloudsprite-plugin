@@ -11,7 +11,7 @@ Do **not** submit until the prod promote gate is green. Do **not** pay the $39
 |-|-|
 | Repository URL | https://github.com/cloudsprite-io/cloudsprite-plugin |
 | Name | CloudSprite |
-| Short description | Talk to CloudSprite as the signed-in user: search datasets and docs, set org/team/project scope, and file product feedback. |
+| Short description | Search your CloudSprite test and measurement data, product docs and SDK catalog from a coding agent, under your own permissions. |
 | Homepage | https://cloudsprite.io |
 | Documentation | https://docs.cloudsprite.io/platform/connect-your-ai/ |
 | License | MIT |
